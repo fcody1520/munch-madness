@@ -10,3 +10,9 @@ Make model and set up how the DB will work
 5) Save history of the places where you've eaten. 
 6) eventually add a history functionality and a count of how many times you've eaten at certain restaurants. 
  
+
+ Notes from making model.js
+
+ - Make sure in the second object of your modelname.int, you assign modelName: 'modelNameLowerCase', so you don't have to put quotes on your table names when you have a table with a capital letter. 
+
+ - also make 
