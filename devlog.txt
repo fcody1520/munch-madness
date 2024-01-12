@@ -1,0 +1,12 @@
+GOALS
+
+Make model and set up how the DB will work
+
+1) Create a login for user 
+2) Find user's location using geolocation function
+    "https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API/Using_the_Geolocation_API#:~:text=To%20obtain%20the%20user's%20current,up%2Dto%2Ddate%20information."
+3) Find a way to link nearby restaurants to the user's location.
+4) Create React functionality to have the reastaurants compete against each other, eventually declaring a winner.
+5) Save history of the places where you've eaten. 
+6) eventually add a history functionality and a count of how many times you've eaten at certain restaurants. 
+ 
