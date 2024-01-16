@@ -1,6 +1,12 @@
 GOALS
 
-Make model and set up how the DB will work
+[X]Make model and set up how the DB will work
+[]Create basic react app without dummy data (Hard code options)
+[]figure out how geolocation works
+[]link api for finding restaurants around that location
+[]Create get requests
+[]Create the manipulation of Dom using data from back end in react
+
 
 1) Create a login for user 
 2) Find user's location using geolocation function
@@ -10,6 +16,8 @@ Make model and set up how the DB will work
 5) Save history of the places where you've eaten. 
 6) eventually add a history functionality and a count of how many times you've eaten at certain restaurants. 
  
+ look up keyframes
+ 4:06:45 in zoom video
 
  Notes from making model.js
 
