@@ -1,10 +1,15 @@
 import React, {useState} from 'react'
-import {biUserCircle} from 'react-icons/bi'
+// import {biUserCircle} from 'react-icons/bi'
 
 export default function Login() {
     
     const [action, setAction] = useState('Sign Up') 
   
+
+
+    function handleLogIn(){
+        
+    }
   
     return (
     <>
@@ -15,17 +20,19 @@ export default function Login() {
         </div>
         <div className='inputs'>
             {action==="Login" ? <div></div>: <div className='input'>
-                <img src="" alt="" />
-                <input id='Name' type="text" placeholder='Name' />
-            </div>}
+                {/* <img src={biUserCircle} alt="" /> */}
+                <input id='First Name' type="text" placeholder='First Name' required />
+                <input id='Last Name' type="text" placeholder='Last Name' required />
+            </div>
+            }
             
             <div className='input'>
                 <img src="" alt="" />
-                <input id='Email' type="email" placeholder='Email'/>
+                <input id='Email' type="email" placeholder='Email' required/>
             </div>
             <div className='input'>
                 <img src="" alt="" />
-                <input id='Password' type="password" placeholder='Password'/>
+                <input id='Password' type="password" placeholder='Password' required/>
             </div>
         </div>
         {/* <div className="forgot-password">Lost Password? <span>Click Here!</span></div> turn this into ternary also */}
@@ -34,6 +41,7 @@ export default function Login() {
             <div className={action==='Sign Up'?'submit gray': "submit"}
             onClick={() => {setAction('Login')}}>Login</div>
         </div>
+        <button onClick={handleLogIn}>Let's Munch!</button>
     </>
   )
 }
