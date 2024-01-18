@@ -14,8 +14,12 @@ app.get('/user', (req,res)=>{
     res.status(200).send(req.session.user)
 })
 
-const {login} = authCtrl
+const {login,register, logout} = authCtrl
 app.post('/login', login)
+
+app.post('/register', register)
+
+app.delete('/logout', logout)
 
 
 

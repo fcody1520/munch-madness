@@ -1,10 +1,10 @@
 GOALS
 
 [X]Make model and set up how the DB will work
+[]Create get requests
 []Create basic react app without dummy data (Hard code options)
 []figure out how geolocation works
 []link api for finding restaurants around that location
-[]Create get requests
 []Create the manipulation of Dom using data from back end in react
 
 
@@ -18,6 +18,7 @@ GOALS
  
  look up keyframes
  4:06:45 in zoom video
+ look up mapbox restaurants within a distance
 
  Notes from making model.js
 
