@@ -8,13 +8,19 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(session({secret: 'punkface', saveUninitialized:true, resave: false}))
 
-app.get('/user', (req,res)=>{
-    // console.log('hit check user');
+function loginRequired(req, res, next){
+    if (!req.session.user.userId){
+        res.status(401).send({message: 'Unauthorized'})
+    } else{ 
+        next()
+    }
+}
 
+app.get('/user', (req,res)=>{
     res.status(200).send(req.session.user)
 })
 
-const { login,register,logout,deleteAcct } = authCtrl
+const { login, register, logout, deleteAcct, editAcct } = authCtrl
 app.post('/login', login)
 
 app.post('/register', register)
@@ -23,6 +29,8 @@ app.delete('/logout', logout)
 // add loggedIn middleware
 
 app.delete('/delete-user/:email', deleteAcct)
+// add loggedIn middleware
+app.put('/edit-user', editAcct)
 // add loggedIn middleware
 
 viteExpress.listen(app, 8000, () => console.log(`Server is listening on port 8000`))

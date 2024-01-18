@@ -56,5 +56,28 @@ export default {
         res.status(200).send('Account successfully deleted.')
         // send status and message
     },
-    
+    editAcct: async (req,res) => {
+        // destructure info from request from the front end
+        const {email, fname, lname, oPassword, nPassword} = req.body
+        const userId = req.session.user.userId 
+        const user = await User.findByPk(userId)
+        
+        if (oPassword === user.password){
+            console.log();
+            user.set({
+                email: email,
+                fname: fname,
+                lname: lname,
+                password: nPassword
+            })
+            await user.save()
+            res.status(200).send({message: 'Info updated'})
+
+        } else {
+            res.status(400).send({message: 'Invalid password'})
+        }
+        // if password matches what was found before, update the info to the req.body(using User.set())
+
+        // if it works, send a 200 status. if it doesn't, send an error
+    }
 }
