@@ -43,8 +43,18 @@ export default {
         // send status code
     },
     logout: async (req,res) => {
+        
         req.session.destroy()
         res.status(200).send('Successfully logged out!')
+    },
+    deleteAcct: async (req,res) => {
+        const {email} = req.params
+        console.log('hit delete acct');
+        // determinei delete request
+        await User.destroy({where: {email: email}})
+        // use .destroy() with a where email clause to determine the account that needs to be deleted
+        res.status(200).send('Account successfully deleted.')
+        // send status and message
     },
     
 }

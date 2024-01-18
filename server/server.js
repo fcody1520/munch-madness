@@ -14,13 +14,15 @@ app.get('/user', (req,res)=>{
     res.status(200).send(req.session.user)
 })
 
-const {login,register, logout} = authCtrl
+const { login,register,logout,deleteAcct } = authCtrl
 app.post('/login', login)
 
 app.post('/register', register)
 
 app.delete('/logout', logout)
+// add loggedIn middleware
 
-
+app.delete('/delete-user/:email', deleteAcct)
+// add loggedIn middleware
 
 viteExpress.listen(app, 8000, () => console.log(`Server is listening on port 8000`))
