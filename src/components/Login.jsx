@@ -9,6 +9,7 @@ export default function Login({ setUserData, setLoggedIn }) {
     const [passwordInput, setPasswordInput] = useState('')
     const [firstNameInput, setFirstNameInput] = useState('')
     const [lastNameInput, setLastNameInput] = useState('')
+    const [verifyPasswordInput, setVerifyPasswordInput] = useState('')
 
     async function handleLogIn(){
         let logMaBod = {
@@ -36,9 +37,22 @@ export default function Login({ setUserData, setLoggedIn }) {
             password: passwordInput
         }
 
+        // logic for password matching here
+
+        if(passwordInput !== verifyPasswordInput){
+            alert(`Password fields don't match!`)
+            return
+        }
+
         try{ 
-            const response = await axios.post('/login', signMaBod)
-    
+            const response = await axios.post('/register', signMaBod)
+            setFirstNameInput('')
+            setLastNameInput('')
+            setEmailInput('')
+            setPasswordInput('')
+            setVerifyPasswordInput('')
+            alert(`User added, please login and let's Munch!`)
+
             } catch (error) {
                 console.error('Error during post request:', error)
             }
@@ -91,6 +105,16 @@ export default function Login({ setUserData, setLoggedIn }) {
                 onChange={(e) => setPasswordInput(e.target.value)} 
                 required/>
             </div>
+            {action==="Login" ? <div></div>: 
+            <div className="input">
+                <input 
+                id='verify-password'
+                type="password"
+                placeholder='Verify Password'
+                value={verifyPasswordInput}
+                onChange={(e) => setVerifyPasswordInput(e.target.value)}
+                />
+            </div>}
         </div>
         {/* <div className="forgot-password">Lost Password? <span>Click Here!</span></div> turn this into ternary also */}
         <div className="submit-container">
