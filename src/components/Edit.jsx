@@ -1,8 +1,11 @@
 import React from 'react'
 
 export default function Edit() {
+
+
   return (
     <>
+      <h1>Edit-info</h1>
      <form action="Edit-Info">
         <label htmlFor="First-name">First Name:</label>
         <input id='edit-first-name' type="text" placeholder='First Name' />

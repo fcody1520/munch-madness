@@ -4,6 +4,7 @@ import Login from './components/Login'
 import Edit from './components/Edit'
 import Bracket from './components/Bracket'
 import axios from 'axios'
+import { Outlet } from 'react-router-dom'
 
 function App() {
 
@@ -32,13 +33,14 @@ function App() {
   }, []);
   
   return (
-    <>{loggedIn ?
+    <>
+    {loggedIn ?
       <Bracket/>:
-       <Login
-       setUserData={setUserData}
-       setLoggedIn={setLoggedIn}
-       />
-      }
+      <Login
+        setUserData={setUserData}
+        setLoggedIn={setLoggedIn}
+      />
+    }
     </>
   )
 }
