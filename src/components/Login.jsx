@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 // import {biUserCircle} from 'react-icons/bi'
 import axios from 'axios'
 
-export default function Login() {
+export default function Login({ setUserData, setLoggedIn }) {
     
     const [action, setAction] = useState('Sign Up') 
     const [emailInput, setEmailInput] = useState('')
@@ -11,21 +11,37 @@ export default function Login() {
     const [lastNameInput, setLastNameInput] = useState('')
 
     async function handleLogIn(){
-        let signMaBod = {
+        let logMaBod = {
              email: emailInput,
              password: passwordInput
         }
 
         try{ 
-        const response = await axios.post('/login', signMaBod)
+        const response = await axios.post('/login', logMaBod)
+            setUserData(response.data)
+            setLoggedIn(true)
         
+
         } catch (error) {
-            console.error('Error during post request:', error)
+            console.error('Error during post request:', error.response.data.message)
+            alert(error.response.data.message);
         }
     };
 
-    function handleSignUp(){
-        
+    async function handleSignUp(){
+        let signMaBod ={
+            fname: firstNameInput,
+            lname: lastNameInput,
+            email: emailInput,
+            password: passwordInput
+        }
+
+        try{ 
+            const response = await axios.post('/login', signMaBod)
+    
+            } catch (error) {
+                console.error('Error during post request:', error)
+            }
     }
   
     return (
