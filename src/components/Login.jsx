@@ -10,6 +10,11 @@ export default function Login({ setUserData, setLoggedIn }) {
     const [firstNameInput, setFirstNameInput] = useState('')
     const [lastNameInput, setLastNameInput] = useState('')
     const [verifyPasswordInput, setVerifyPasswordInput] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
+
+    function togglePasswordVisibility(){
+        setShowPassword((prevShowPassword) => !prevShowPassword)
+    }
 
     async function handleLogIn(){
         let logMaBod = {
@@ -100,16 +105,19 @@ export default function Login({ setUserData, setLoggedIn }) {
                 <input 
                 id='Password' 
                 value={passwordInput}
-                type="password" 
+                type={showPassword ? 'text': 'password'} 
                 placeholder='Password'
                 onChange={(e) => setPasswordInput(e.target.value)} 
                 required/>
             </div>
+            <button className='smol' onClick={togglePasswordVisibility}>
+                {showPassword ? 'Hide Password' : 'Show Password' }
+            </button>
             {action==="Login" ? <div></div>: 
             <div className="input">
                 <input 
                 id='verify-password'
-                type="password"
+                type={showPassword ? 'text': 'password'} 
                 placeholder='Verify Password'
                 value={verifyPasswordInput}
                 onChange={(e) => setVerifyPasswordInput(e.target.value)}
