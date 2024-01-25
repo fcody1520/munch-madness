@@ -18,6 +18,7 @@ export default function Edit() {
 
   function onCancelHandler(e) {
     e.preventDefault()
+    
   }
 
   function deleteAcctHandler(e) {
@@ -60,12 +61,12 @@ export default function Edit() {
         value={editPasswordInput}
         onChange={e => setEditPasswordInput(e.target.value)} 
         />
-        <button onClick={onSaveHandler}>Save Changes</button>
-        <button onClick={onCancelHandler}>Cancel</button>
+        <button className='edit' onClick={onSaveHandler}>Save Changes</button>
+        <button className='edit' onClick={onCancelHandler}>Cancel</button>
      </form>
     <br />
     <br />
-    <button onClick={deleteAcctHandler}>Delete Account</button>
+    <button className='edit' onClick={deleteAcctHandler}>Delete Account</button>
     </>
   )
 }
