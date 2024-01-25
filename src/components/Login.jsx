@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-// import {biUserCircle} from 'react-icons/bi'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
 export default function Login({ setUserData, setLoggedIn }) {
@@ -72,7 +73,7 @@ export default function Login({ setUserData, setLoggedIn }) {
         </div>
         <div className='inputs'>
             {action==="Login" ? <div></div>: <div className='input'>
-                {/* <img src={biUserCircle} alt="" /> */}
+                <FontAwesomeIcon icon={faCircleUser}/>
                 <input 
                 id='first-name' 
                 value={firstNameInput}
