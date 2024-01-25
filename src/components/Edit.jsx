@@ -7,13 +7,14 @@ export default function Edit() {
   const [editEmailInput, setEditEmailInput] = useState('')
   const [editPasswordInput, setEditPasswordInput] = useState('')
 
-
-  //create verify password funcitonality using modals or a window.confirm (if possible)
-  // create functionality to only show the edit info if the password is confirmed
-  //maybe use useEffect to see if the password has yet been entered
-
   function onSaveHandler(e) {
     e.preventDefault()
+    const isConfirmed = confirm()
+    if (!isConfirmed) return
+    else {
+      // axios logic here
+    }
+ 
   }
 
   function onCancelHandler(e) {

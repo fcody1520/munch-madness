@@ -21,8 +21,14 @@ export default function Navbar({userData, setLoggedIn}) {
     return (
     <>
         <div className="navbar">
-            <NavLink to='/edit-info' className='navBar'><FontAwesomeIcon icon={faUserGear}/></NavLink>
-            <button className='navBar' onClick={handleLogout}>Logout</button>
+          <span className='navbar__welcome'>Welcome, {userData.fname}. Let's Munch!</span>
+          <div className='navbar__image'>
+            <img src="https://picsum.photos/200" alt="" />
+          </div>
+            <div className='navbar__button'>
+              <NavLink to='/edit-info' className='navbar'><FontAwesomeIcon icon={faUserGear}/></NavLink>
+              <button className='navbar' onClick={handleLogout}>Logout</button>
+            </div>
         </div>
     </>
   )
