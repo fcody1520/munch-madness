@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { Route, Routes,  createBrowserRouter, createRoutesFromElements, BrowserRouter } from 'react-router-dom';
 import Edit from './components/Edit.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
