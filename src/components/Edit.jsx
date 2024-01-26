@@ -5,7 +5,7 @@ import  Button  from 'react-bootstrap/Button'
 import  Form  from 'react-bootstrap/Form'
 import  Modal  from 'react-bootstrap/Modal'
 
-export default function Edit() {
+export default function Edit({userData}) {
   const navigate = useNavigate();
 
   const [editFirstNameInput, setEditFirstNameInput] = useState("");
@@ -16,8 +16,12 @@ export default function Edit() {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [show, setShow] = useState(false)
+  const [deleteAcctPasswordInput, setDeleteAcctPasswordInput] = useState('')
 
-  const handleClose = () => setShow(false)
+  const handleClose = (e) => {
+    e.preventDefault()
+    setShow(false)
+  }
   const handleShow = () => setShow(true)
 
   function togglePasswordVisibility(e) {
@@ -70,6 +74,18 @@ export default function Edit() {
 
   async function deleteAcctHandler(e) {
     e.preventDefault();
+ 
+    const isConfirmed = confirm(`Your account will be permanently deleted, do you wish to continue?`)
+
+    if(!isConfirmed) return
+    else {
+      let deleteMaBod = {
+        password: deleteAcctPasswordInput
+      }
+      const res = await axios.put(`/delete-user`, deleteMaBod)
+      .catch((err) => console.error('Error during edit request:', err))
+    }
+    navigate('/')
   }
 
   return (
@@ -160,14 +176,6 @@ export default function Edit() {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="deleteAcct.ControlInput1">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="email"
-                autoFocus
-              />
-            </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="deleteAcct.ControlInput2"
@@ -175,17 +183,10 @@ export default function Edit() {
               <Form.Label>Please enter password: </Form.Label>
               <Form.Control 
               type='password' 
-              placeholder='password'
-              />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="deleteAcct.ControlInput3"
-            >
-              <Form.Label>Re-enter password: </Form.Label>
-              <Form.Control 
-              type='password' 
-              placeholder='password'
+              placeholder='Password'
+              value={deleteAcctPasswordInput}
+              onChange={e => setDeleteAcctPasswordInput(e.target.value)}
+              required
               />
             </Form.Group>
           </Form>
@@ -195,7 +196,7 @@ export default function Edit() {
             Cancel
           </Button>
           <Button variant="primary" onClick={deleteAcctHandler}>
-            Save Changes
+            Delete Account
           </Button>
         </Modal.Footer>
       </Modal>

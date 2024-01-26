@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react' 
+import Rounds from './Rounds'
 
 export default function Bracket() {
   return (

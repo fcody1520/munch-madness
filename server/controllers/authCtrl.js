@@ -48,12 +48,21 @@ export default {
         res.status(200).send('Successfully logged out!')
     },
     deleteAcct: async (req,res) => {
-        const {email} = req.params
+        const {email, userId} = req.session.user
+        const {password} = req.body
         console.log('hit delete acct');
+
+        const user = await User.findByPk(userId)
+        if(user.password === password){
+            await User.destroy({where: {email}})
+            req.session.destroy()
+            // use .destroy() with a where email clause to determine the account that needs to be deleted
+            res.status(200).send('Account successfully deleted.')
+        } else {
+            res.status(401)
+        }
+
         // determinei delete request
-        await User.destroy({where: {email: email}})
-        // use .destroy() with a where email clause to determine the account that needs to be deleted
-        res.status(200).send('Account successfully deleted.')
         // send status and message
     },
     editAcct: async (req,res) => {

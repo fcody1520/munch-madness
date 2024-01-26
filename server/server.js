@@ -26,11 +26,11 @@ app.post('/login', login)
 app.post('/register', register)
 
 app.delete('/logout',loginRequired, logout)
-// add loggedIn middleware
 
-app.delete('/delete-user/:email',loginRequired, deleteAcct)
-// add loggedIn middleware
+
+app.put('/delete-user',loginRequired, deleteAcct)
+
 app.put('/edit-user',loginRequired, editAcct)
-// add loggedIn middleware
+
 
 viteExpress.listen(app, 8000, () => console.log(`Server is listening on port 8000`))
