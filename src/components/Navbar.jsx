@@ -23,7 +23,7 @@ export default function Navbar({userData, setLoggedIn}) {
         <div className="navbar">
           <span className='navbar__welcome'>Welcome, {userData.fname}. Let's Munch!</span>
           <div className='navbar__image'>
-            <img src="https://picsum.photos/200" alt="" />
+            <img src="./public/munch_madness_logo.png" alt="" />
           </div>
             <div className='navbar__button'>
               <NavLink to='/edit-info' className='navbar'><FontAwesomeIcon icon={faUserGear}/></NavLink>
