@@ -1,4 +1,5 @@
 import {User, Winner} from '../db/model.js'
+import axios from 'axios';
 
 export default {
     login: async (req,res) => {
@@ -88,5 +89,37 @@ export default {
         // if password matches what was found before, update the info to the req.body(using User.set())
 
         // if it works, send a 200 status. if it doesn't, send an error
+    },
+    requestRest: async (req,res) => {
+        console.log(req.params);
+        const options = {
+            method: 'GET',
+            url: 'https://api.yelp.com/v3/businesses/search',
+            params: {
+              latitude: req.params.latitude,
+              longitude: req.params.longitude,
+              sort_by: 'best_match',
+              limit: '8'
+            },
+            headers: {
+              accept: 'application/json',
+              Authorization: 'Bearer Hi4mm6R-ufsQA2bi2_vOrK7lqBWOR88MvEUG_ECje2Vhg23tZZQDAJNjSQ0wpFgtv3_FGbbGGfok8xPqVfcAV5iTqEEwl2S-F25yaOR57gooifE4N3Sc-Xk_L-C3ZXYx'
+            }
+          };
+          
+          let restInfo = []
+          axios.request(options).then(res => {
+            console.log(res.data.businesses);
+            restInfo = res.data.businesses
+            .map((rest) =>{
+                return {
+                    name: rest.name,
+                    img: rest.img_url,
+                    address: rest.location.display_address
+                }
+            })
+            console.log(restInfo);
+            res.status(200).send(restInfo)
+          })
     }
 }
