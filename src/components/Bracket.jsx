@@ -28,29 +28,9 @@ useEffect(() => {
   
     axios.get(`/restaurants/${latitude}/${longitude}`).then(res => {
       console.log(res)
+      const rests = res.data.restInfo
+      console.log(rests);
     }).catch(err => console.log(err))
-
-    // const options = {
-    //   method: 'GET',
-    //   url: 'https://api.yelp.com/v3/businesses/search',
-    //   params: {
-    //     latitude: '40.4183173',
-    //     longitude: '-111.8687941',
-    //     sort_by: 'best_match',
-    //     limit: '8'
-    //   },
-    //   headers: {
-    //     accept: 'application/json',
-    //     Authorization: 'Bearer Hi4mm6R-ufsQA2bi2_vOrK7lqBWOR88MvEUG_ECje2Vhg23tZZQDAJNjSQ0wpFgtv3_FGbbGGfok8xPqVfcAV5iTqEEwl2S-F25yaOR57gooifE4N3Sc-Xk_L-C3ZXYx'
-    //   }
-    // };
-
-    // axios
-    // .request(options).then(res => {
-    //   console.log(res);
-    // })
-
-    // 'https://api.yelp.com/v3/businesses/search?latitude=40.4183173&longitude=-111.8687941&sort_by=best_match&limit=20'  
   };
 
   const errorCallback = (error) => {

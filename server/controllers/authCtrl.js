@@ -106,7 +106,26 @@ export default {
               Authorization: 'Bearer Hi4mm6R-ufsQA2bi2_vOrK7lqBWOR88MvEUG_ECje2Vhg23tZZQDAJNjSQ0wpFgtv3_FGbbGGfok8xPqVfcAV5iTqEEwl2S-F25yaOR57gooifE4N3Sc-Xk_L-C3ZXYx'
             }
           };
-          
+
+          try {
+            const restInfo = await axios.request(options)
+            console.log(restInfo.data.businesses);
+            const reducedrestInfo = restInfo.data.businesses.map(rest => {
+                return {
+                    name: rest.name,
+                    img: rest.image_url,
+                    address: rest.location.display_address
+                }
+            })
+            console.log(reducedrestInfo);
+            res.status(200).send({
+                restInfo: reducedrestInfo,
+            })
+          } catch(err) {
+            console.log(err);
+          }
+
+          /*
           let restInfo = []
           axios.request(options).then(res => {
             console.log(res.data.businesses);
@@ -114,12 +133,14 @@ export default {
             .map((rest) =>{
                 return {
                     name: rest.name,
-                    img: rest.img_url,
+                    img: rest.image_url,
                     address: rest.location.display_address
                 }
             })
             console.log(restInfo);
-            res.status(200).send(restInfo)
-          })
+            
+        })
+        */
+        // res.status(200).send(restInfo)
     }
 }
