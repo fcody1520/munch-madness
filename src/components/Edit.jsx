@@ -101,6 +101,7 @@ export default function Edit({userData}) {
       <form action="Edit-Info">
         <label htmlFor="First-name">First Name: </label>
         <input
+        autoFocus
           id="edit-first-name"
           type="text"
           placeholder="First Name"
@@ -182,6 +183,7 @@ export default function Edit({userData}) {
             >
               <Form.Label>Please enter password: </Form.Label>
               <Form.Control 
+              autoFocus
               type='password' 
               placeholder='Password'
               value={deleteAcctPasswordInput}

@@ -1,10 +1,10 @@
 import React from 'react'
 
 export default function Cards(props) {
-    const { rest, setR1Winners, setR2Winners,  round, setRound, setWinner} = props
+    const { rest, setR1Winners, setR2Winners,  round, setRound, setWinner, rests} = props
 
     function handleSelection(){
-
+        
     }
 
     function addWinners(){ 
@@ -18,10 +18,15 @@ export default function Cards(props) {
 
         }
     }
+    const address = rest.address.join(' ')
 
+    
   return (
-    <div onClick={handleSelection}>
-        {rest}
+    <div className='cards' onClick={handleSelection}>
+        {/* {rest} */}
+        <h4>{rest.name}</h4>
+        <div className='card__images'><img src={rest.img} alt="" /></div>
+        <p>{address}</p>
     </div>
   )
 }

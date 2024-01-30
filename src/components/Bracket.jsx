@@ -6,11 +6,12 @@ import axios from 'axios'
 
 export default function Bracket() {
 
-  const sampleArr = ['McDonalds', 'Wendys','In n out','Five Guys','Subway','burger king','Mo Bettas','Rancheritos'];
+  
 
   const [r1Winners, setR1Winners] = useState([])
   const [r2Winners, setR2Winners] = useState([])
   const [winner, setWinner] = useState([])
+  const [rests, setRests] = useState([])
 
   const [round, setRound] = useState(1)
 
@@ -18,6 +19,7 @@ export default function Bracket() {
 // if there's a change, fire a function that checks the length of the sets(winners)
 // if r1.length is 4, we need to update the round by one
 //  if r2 length is 2, update round to be round 3
+
 
 useEffect(() => {
   const successCallback = (position) => {
@@ -27,9 +29,7 @@ useEffect(() => {
     console.log(position.coords.longitude);
   
     axios.get(`/restaurants/${latitude}/${longitude}`).then(res => {
-      console.log(res)
-      const rests = res.data.restInfo
-      console.log(rests);
+       setRests(res.data.restInfo)
     }).catch(err => console.log(err))
   };
 
@@ -38,19 +38,20 @@ useEffect(() => {
     
   };
 
-  // Get current position when the component mounts
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
-  // Clean up any resources or subscriptions if needed when the component unmounts
+
   return () => {
     // Cleanup logic if necessary
   };
 }, []);
 
-  const eachRest = sampleArr.map((rest) => {
+
+  const eachRest = rests.map((rest) => {
     return (
       <Cards 
         rest={rest}
+        rests={rests}
         setR1Winners={setR1Winners}
         setR2Winners={setR2Winners}
         setWinner={setWinner}
@@ -60,7 +61,7 @@ useEffect(() => {
     )
   });
 
-  console.log(r1Winners);
+  // console.log(r1Winners);
   return (
     <>
       <h1>Munch Madness!</h1>

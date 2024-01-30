@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
+import { faCircleUser,faKey,faUnlockKeyhole,faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
 
 export default function Login({ setUserData, setLoggedIn }) {
@@ -65,9 +65,12 @@ export default function Login({ setUserData, setLoggedIn }) {
     }
   
     return (
-    <>
-        <div className='container'></div>
-        <div className='header'>
+    <>  
+        <div className='login__img'>
+            <img src="./public/munch_madness_logo.png" alt="Munch Madness Logo" />
+        </div>
+        <div className='container'>
+        <div className='login__header'>
             <div className='text'>{action}</div>
             <div className='underline'></div>
         </div>
@@ -81,6 +84,7 @@ export default function Login({ setUserData, setLoggedIn }) {
                 placeholder='First Name'
                 onChange={(e) => setFirstNameInput(e.target.value)} 
                 required />
+                
                 <input 
                 id='last-name'
                 value={lastNameInput} 
@@ -92,7 +96,7 @@ export default function Login({ setUserData, setLoggedIn }) {
             }
             
             <div className='input'>
-                <img src="" alt="" />
+            <FontAwesomeIcon icon={faPaperPlane}/>
                 <input 
                 id='Email' 
                 value={emailInput}
@@ -102,7 +106,7 @@ export default function Login({ setUserData, setLoggedIn }) {
                 required/>
             </div>
             <div className='input'>
-                <img src="" alt="" />
+            <FontAwesomeIcon icon={faKey}/>
                 <input 
                 id='Password' 
                 value={passwordInput}
@@ -116,6 +120,7 @@ export default function Login({ setUserData, setLoggedIn }) {
             </button>
             {action==="Login" ? <div></div>: 
             <div className="input">
+                <FontAwesomeIcon icon={faUnlockKeyhole}/>
                 <input 
                 id='verify-password'
                 type={showPassword ? 'text': 'password'} 
@@ -134,6 +139,7 @@ export default function Login({ setUserData, setLoggedIn }) {
         <button onClick={handleSignUp}>Let Me Munch!</button>
         :
         <button onClick={handleLogIn}>Let's Munch!</button>}
+        </div>
     </>
   )
 }
