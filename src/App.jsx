@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import './CSS/App.css'
 import Login from './components/Login'
-import Edit from './components/Edit'
 import Bracket from './components/Bracket'
 import axios from 'axios'
 import { Outlet } from 'react-router-dom'

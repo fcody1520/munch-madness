@@ -65,11 +65,11 @@ export default function Login({ setUserData, setLoggedIn }) {
     }
   
     return (
-    <>  
+    <div className='height'>  
         <div className='login__img'>
             <img src="./public/munch_madness_logo.png" alt="Munch Madness Logo" />
         </div>
-        <div className='container'>
+        <div className='contain'>
         <div className='login__header'>
             <div className='text'>{action}</div>
             <div className='underline'></div>
@@ -140,6 +140,6 @@ export default function Login({ setUserData, setLoggedIn }) {
         :
         <button onClick={handleLogIn}>Let's Munch!</button>}
         </div>
-    </>
+    </div>
   )
 }
