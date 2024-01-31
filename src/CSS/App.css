@@ -88,7 +88,6 @@ button:focus-visible {
 }
 
 .login__img {
-  border: 1px solid orange;
   width: 20rem;
   height: 19rem;
   margin: auto;
