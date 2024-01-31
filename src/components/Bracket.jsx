@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import Rounds from './Rounds'
 import Cards from './Cards'
 import axios from 'axios'
+import '../CSS/Bracket.css'
 
 
 export default function Bracket() {
