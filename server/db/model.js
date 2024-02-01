@@ -71,7 +71,8 @@ Winner.init(
     },
     {
         modelName: 'winner',
-        sequelize: sequelize
+        sequelize: sequelize,
+        timestamps: true
     }
 )
 

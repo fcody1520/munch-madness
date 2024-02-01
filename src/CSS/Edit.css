@@ -56,8 +56,22 @@ span {
     max-width: 200px !important;
     background-color: red !important;
     border: red !important;
+    font-family: 'Courier New', Courier, monospace !important;
 
   }
-  /* .delete__acct {
-    
-  } */
+
+  .delete {
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .delete__button:hover {
+    background-color: white !important;
+    color: red !important;
+  } 
+  .modal-header, .modal-body, .modal-footer {
+    background-color: rgb(187,209,213, .3) !important;
+  }
+ 
+  .mb-3 input {
+    background: transparent;
+  }

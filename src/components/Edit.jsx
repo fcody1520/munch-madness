@@ -204,20 +204,26 @@ export default function Edit({ userData }) {
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Delete Account?</Modal.Title>
+            <Modal.Title>
+              <span className="delete">Delete Account?</span>
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
               <Form.Group className="mb-3" controlId="deleteAcct.ControlInput2">
-                <Form.Label>Please enter password: </Form.Label>
-                <Form.Control
-                  autoFocus
-                  type="password"
-                  placeholder="Password"
-                  value={deleteAcctPasswordInput}
-                  onChange={(e) => setDeleteAcctPasswordInput(e.target.value)}
-                  required
-                />
+                <Form.Label>
+                  <span className="delete">Please enter password: </span>
+                </Form.Label>
+                <span className="delete">
+                  <Form.Control
+                    autoFocus
+                    type="password"
+                    placeholder="Password"
+                    value={deleteAcctPasswordInput}
+                    onChange={(e) => setDeleteAcctPasswordInput(e.target.value)}
+                    required
+                  />
+                </span>
               </Form.Group>
             </Form>
           </Modal.Body>

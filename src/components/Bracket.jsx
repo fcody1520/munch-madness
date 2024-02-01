@@ -2,16 +2,18 @@ import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
 import "../CSS/Bracket.css";
 import axios from "axios";
+import useWindowDimensions from "../customHooks/useWindowDimensions.jsx";
 
 const DEFAULT_QUANTITY = 8;
-const BRACKET_PIXELS_WIDTH = 1500;
-const BRACKET_PIXELS_HEIGHT = 1000;
 
 export default function Bracket({
   doNotSeed,
   manualContenders,
   contenderQuantity,
 }) {
+
+  const {width, height} = useWindowDimensions();
+
   const [tree, setTree] = useState(
     manualContenders && manualContenders.length > 0
       ? makeTree(doNotSeed ? shuffleArray(manualContenders) : manualContenders)
@@ -40,7 +42,6 @@ export default function Bracket({
         axios
           .get(`/restaurants/${latitude}/${longitude}`)
           .then((res) => {
-            console.log('hey')
             // setRests(res.data.restInfo);
             let quantity = contenderQuantity;
             if (!quantity) {
@@ -48,7 +49,7 @@ export default function Bracket({
             }
       
             setTree(makeTree(doNotSeed ? shuffleArray(res.data.restInfo) : res.data.restInfo));
-            
+            console.log(res.data.restInfo);
             
           })
           .catch((err) => console.log(err));
@@ -103,6 +104,9 @@ export default function Bracket({
   //   )
   // });
 
+      // const address = node?.value?.address.join(' ')
+
+
   // console.log(r1Winners);
   return (
     <>
@@ -122,22 +126,22 @@ export default function Bracket({
       {
         tree
           ?<div
-          style={{position: 'relative', width: BRACKET_PIXELS_WIDTH, height: BRACKET_PIXELS_HEIGHT}}
+          style={{position: 'relative', width: width, height: (height-142)}}
       >
           {
               createTreeArrs(tree).map((levelArr, n, treeArr) => {
-                  let x = BRACKET_PIXELS_WIDTH * (n / treeArr.length)
+                  let y = height * (n / treeArr.length)
                   return <div
                       className={"node-level"}
                       style={{
-                          height: '100%',
+                          width: '100%',
                           position: 'absolute',
-                          top: 0,
-                          left: `${x}px`,
-                          // display: 'flex',
-                          display: 'grid',
+                          top: `${y}px`,
+                          left: 0,
+                          display: 'flex',
+                          // display: 'grid',
                           gridTemplateColumns: ``,
-                          flexDirection: 'column',
+                          flexDirection: 'row',
                           justifyContent: 'space-around',
                           alignItems: 'center'}}
                   >
@@ -148,6 +152,9 @@ export default function Bracket({
                                   className={(node.active ? "active-node-box " : "inactive-node-box ") + "node-box"}
                               >
                                   <h4>{node?.value?.name}</h4>
+                                  <div className="card__images"><img src={node?.value?.img} alt="" /></div>
+                                  <br />
+                                  <p>{node?.value?.address.join(' ')}</p>
                               </div>
                           })
                       }
@@ -188,7 +195,7 @@ function createTreeArrs(tree) {
     }
   }
 
-  console.log(returnArr);
+  // console.log(returnArr);
   return returnArr;
 }
 

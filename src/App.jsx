@@ -3,7 +3,6 @@ import './CSS/App.css'
 import Login from './components/Login'
 import Bracket from './components/Bracket'
 import axios from 'axios'
-import { Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
 
 function App() {
@@ -36,7 +35,7 @@ function App() {
     <>
     
       {loggedIn ?
-        <div>
+        <div style={{overflow: 'auto'}}>
           <Navbar
             setLoggedIn={setLoggedIn}
             userData={userData}
