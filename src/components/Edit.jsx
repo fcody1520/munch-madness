@@ -198,7 +198,7 @@ export default function Edit({ userData }) {
       <br />
       <br />
       <div className="delete__acct">
-        <Button variant="primary" onClick={handleShow}>
+        <Button className="delete__button" onClick={handleShow}>
           Delete Account
         </Button>
 
@@ -222,10 +222,10 @@ export default function Edit({ userData }) {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button className="delete__button" onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="primary" onClick={deleteAcctHandler}>
+            <Button className="delete__button" onClick={deleteAcctHandler}>
               Delete Account
             </Button>
           </Modal.Footer>

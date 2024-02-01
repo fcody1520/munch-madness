@@ -1,3 +1,5 @@
+
+
 .node-box {
     height: 30px;
     width: 70px;
@@ -5,9 +7,10 @@
 }
 
 .active-node-box {
-    background-color: rgb(66, 235, 235, .6);
+    background-color: rgb(34,181,215);
     /* min-height: 300px;
     min-width: 150px; */
+    cursor: pointer;
 }
 
 .inactive-node-box {

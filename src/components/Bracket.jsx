@@ -18,11 +18,11 @@ export default function Bracket({
       : null
   );
 
-  const [r1Winners, setR1Winners] = useState([]);
-  const [r2Winners, setR2Winners] = useState([]);
-  const [winner, setWinner] = useState([]);
-  const [rests, setRests] = useState([]);
-  const [round, setRound] = useState(1);
+  // const [r1Winners, setR1Winners] = useState([]);
+  // const [r2Winners, setR2Winners] = useState([]);
+  // const [winner, setWinner] = useState([]);
+  // const [rests, setRests] = useState([]);
+  // const [round, setRound] = useState(1);
 
   // make a useEffect, inside watch r1 winners and r2 winners
   // if there's a change, fire a function that checks the length of the sets(winners)
@@ -134,7 +134,9 @@ export default function Bracket({
                           position: 'absolute',
                           top: 0,
                           left: `${x}px`,
-                          display: 'flex',
+                          // display: 'flex',
+                          display: 'grid',
+                          gridTemplateColumns: ``,
                           flexDirection: 'column',
                           justifyContent: 'space-around',
                           alignItems: 'center'}}
