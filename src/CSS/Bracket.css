@@ -5,9 +5,11 @@
 }
 
 .active-node-box {
-    background-color: lightgreen;
+    background-color: rgb(66, 235, 235, .6);
+    /* min-height: 300px;
+    min-width: 150px; */
 }
 
 .inactive-node-box {
-    background-color: grey;
+    background-color: rgb(133,5,3, .6);
 }

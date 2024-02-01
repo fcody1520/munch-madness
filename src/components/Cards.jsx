@@ -7,18 +7,18 @@ export default function Cards(props) {
         
     }
 
-    function addWinners(){ 
-        switch(round){
-            case 1:
-                return setR1Winners(( r1Winners) => [...new Set(r1Winners, rest)]);
-            case 2: 
-                return () => setR2Winners(() => []);
-            default:
-                return () => setWinner(rest);
+    // function addWinners(){ 
+    //     switch(round){
+    //         case 1:
+    //             return setR1Winners(( r1Winners) => [...new Set(r1Winners, rest)]);
+    //         case 2: 
+    //             return () => setR2Winners(() => []);
+    //         default:
+    //             return () => setWinner(rest);
 
-        }
-    }
-    const address = rest.address.join(' ')
+    //     }
+    // }
+    // const address = rest.address.join(' ')
 
     
   return (

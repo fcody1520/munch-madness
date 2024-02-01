@@ -28,6 +28,8 @@ body {
 
   min-width: 320px;
   min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 h1 {
@@ -35,3 +37,6 @@ h1 {
   line-height: 1.1;
 }
 
+.cursor-hover {
+  max-width: 100vw;
+}

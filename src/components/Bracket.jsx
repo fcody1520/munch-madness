@@ -4,8 +4,8 @@ import "../CSS/Bracket.css";
 import axios from "axios";
 
 const DEFAULT_QUANTITY = 8;
-const BRACKET_PIXELS_WIDTH = 1200;
-const BRACKET_PIXELS_HEIGHT = 700;
+const BRACKET_PIXELS_WIDTH = 1500;
+const BRACKET_PIXELS_HEIGHT = 1000;
 
 export default function Bracket({
   doNotSeed,
@@ -41,7 +41,7 @@ export default function Bracket({
           .get(`/restaurants/${latitude}/${longitude}`)
           .then((res) => {
             console.log('hey')
-            setRests(res.data.restInfo);
+            // setRests(res.data.restInfo);
             let quantity = contenderQuantity;
             if (!quantity) {
               quantity = DEFAULT_QUANTITY;
@@ -145,7 +145,7 @@ export default function Bracket({
                                   onClick={() => selectNode(node)}
                                   className={(node.active ? "active-node-box " : "inactive-node-box ") + "node-box"}
                               >
-                                  <p>{node?.value?.name}</p>
+                                  <h4>{node?.value?.name}</h4>
                               </div>
                           })
                       }
