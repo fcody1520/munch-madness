@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../CSS/Bracket.css";
 import axios from "axios";
 import useWindowDimensions from "../customHooks/useWindowDimensions.jsx";
+import BracketModal from "./BracketModal.jsx";
 
 const DEFAULT_QUANTITY = 8;
 
@@ -116,7 +117,7 @@ export default function Bracket({
                       {
                           levelArr.map((node,index) => {
                               return <div
-                              key={`node-${n}-${index}`}
+                                  key={`node-${n}-${index}`}
                                   onClick={() => selectNode(node)}
                                   className={(node.active ? "active-node-box " : "inactive-node-box ") + "node-box"}
                               >
@@ -133,7 +134,12 @@ export default function Bracket({
       </div>
           : <div>No bracket</div>
       }
-
+      {
+        hasWinner ? <BracketModal
+        show={true}
+        winnerNode={tree}
+        /> : null
+      }
     </>
   );
 }

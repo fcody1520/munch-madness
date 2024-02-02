@@ -211,7 +211,7 @@ export default function Edit({ userData }) {
         </Button>
 
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title>
               <span className="delete">Delete Account?</span>
             </Modal.Title>
