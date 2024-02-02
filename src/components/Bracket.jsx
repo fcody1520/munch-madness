@@ -52,9 +52,11 @@ export default function Bracket({
 
   }, []);
 
+  
+
   function selectNode (node){
     if(!node.active || !node.parent){
-      return
+      return 
     }
 
     let siblingNode = node.parent.child1
@@ -86,17 +88,19 @@ export default function Bracket({
       {
         tree
           ?<div
-          style={{position: 'relative', width: width, height: (height-142)}}
+          id="tree"
+          style={{position: 'relative', width: width, height: (height - 180) + 'px'}}
       >
           {
               createTreeArrs(tree).map((levelArr, n, treeArr) => {
                   let y = height * (n / treeArr.length)
                   return <div
+                  key={`level-${n}`}
                       className={"node-level"}
                       style={{
                           width: '100%',
                           position: 'absolute',
-                          top: `${y}px`,
+                          top: `${y - (n / treeArr.length)*(180)}px`,
                           left: 0,
                           display: 'flex',
                           gridTemplateColumns: ``,
@@ -105,12 +109,13 @@ export default function Bracket({
                           alignItems: 'center'}}
                   >
                       {
-                          levelArr.map((node) => {
+                          levelArr.map((node,index) => {
                               return <div
+                              key={`node-${n}-${index}`}
                                   onClick={() => selectNode(node)}
                                   className={(node.active ? "active-node-box " : "inactive-node-box ") + "node-box"}
                               >
-                                  <h4>{node?.value?.name}</h4>
+                                  <h5>{node?.value?.name}</h5>
                                   <div className="card__images"><img src={node?.value?.img} alt="" /></div>
                                   <br />
                                   <p>{node?.value?.address.join(' ')}</p>
@@ -151,6 +156,10 @@ function createTreeArrs(tree) {
 
     if (node.child2) {
       collectionArr.push(node.child2);
+    }
+
+    if (!node.parent && !node.child1 && !node.child2) {
+      
     }
   }
 

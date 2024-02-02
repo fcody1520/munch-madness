@@ -58,7 +58,8 @@ span {
     background-color: red !important;
     border: red !important;
     font-family: 'Courier New', Courier, monospace !important;
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
   }
 
   .delete {
@@ -68,6 +69,7 @@ span {
   .delete__button:hover {
     background-color: white !important;
     color: red !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   } 
   .modal-header, .modal-body, .modal-footer {
     background-color: rgb(187,209,213, .3) !important;

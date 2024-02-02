@@ -28,11 +28,11 @@ export default function Navbar({ userData, setLoggedIn }) {
         </div>
         <div className="navbar__button">
           <div>
-            <NavLink to="/edit-info" className="navbar">
-              <FontAwesomeIcon icon={faToolbox} />
+            <NavLink to="/edit-info" className="navbar__icon">
+              <FontAwesomeIcon size="3x" style={{color: "#22B5D7"}} icon={faGears} />
             </NavLink>
             </div>
-          <button className="navbar" onClick={handleLogout}>
+          <button onClick={handleLogout}>
             Logout
           </button>
         </div>
