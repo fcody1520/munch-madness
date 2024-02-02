@@ -18,6 +18,7 @@ export default function Bracket({
       ? makeTree(doNotSeed ? shuffleArray(manualContenders) : manualContenders)
       : null
   );
+  const [hasWinner, setHasWinner] = useState(false);
 
 
   useEffect(() => {
@@ -74,6 +75,10 @@ export default function Bracket({
     siblingNode.active = false
 
     node.active = false
+
+    if(node.parent.parent === null){
+      setHasWinner(true)
+    }
 
     setTree(structuredClone(tree))
   }
