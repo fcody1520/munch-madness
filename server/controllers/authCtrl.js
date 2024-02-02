@@ -91,7 +91,6 @@ export default {
         // if it works, send a 200 status. if it doesn't, send an error
     },
     requestRest: async (req,res) => {
-        console.log(req.params);
         const options = {
             method: 'GET',
             url: 'https://api.yelp.com/v3/businesses/search',
@@ -109,7 +108,6 @@ export default {
 
           try {
             const restInfo = await axios.request(options)
-            console.log(restInfo.data.businesses);
             const reducedrestInfo = restInfo.data.businesses.map(rest => {
                 return {
                     name: rest.name,
@@ -117,7 +115,6 @@ export default {
                     address: rest.location.display_address
                 }
             })
-            console.log(reducedrestInfo);
             res.status(200).send({
                 restInfo: reducedrestInfo,
             })
@@ -125,22 +122,17 @@ export default {
             console.log(err);
           }
 
-          /*
-          let restInfo = []
-          axios.request(options).then(res => {
-            console.log(res.data.businesses);
-            restInfo = res.data.businesses
-            .map((rest) =>{
-                return {
-                    name: rest.name,
-                    img: rest.image_url,
-                    address: rest.location.display_address
-                }
-            })
-            console.log(restInfo);
-            
+         
+    },
+    postWinner: async (req,res) => {
+        const { name,address,img } = req.body
+        console.log(req.body);
+        const winner = await Winner.create({
+            restName: name,
+            restAddress: address,
+            restImg: img,
+            userId: req.session.user.userId,
         })
-        */
-        // res.status(200).send(restInfo)
-    }
+        res.status(200).send(winner)
+    },
 }

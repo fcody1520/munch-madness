@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 export default function BracketModal({ show, winnerNode }) {
   // const [show, setShow] = useState(false);
@@ -10,7 +11,20 @@ export default function BracketModal({ show, winnerNode }) {
     location.reload();
   }
 
-  function handleSaveRest() {}
+  function handleSaveRest() {
+    axios.post("/restaurants", {
+        name: winnerNode.value.name,
+        img: winnerNode.value.img,
+        address: winnerNode.value.address.join(" "),
+      })
+      .then((response) => {
+        console.log("response", response);
+        location.reload();
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }
 
   return (
     <>

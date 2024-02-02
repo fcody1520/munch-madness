@@ -22,7 +22,7 @@ app.get('/user', (req,res)=>{
     res.status(200).send(req.session.user)
 })
 
-const { login, register, logout, deleteAcct, editAcct,requestRest } = authCtrl
+const { login, register, logout, deleteAcct, editAcct,requestRest,postWinner } = authCtrl
 app.post('/login', login)
 
 app.post('/register', register)
@@ -35,6 +35,8 @@ app.put('/delete-user',loginRequired, deleteAcct)
 app.put('/edit-user',loginRequired, editAcct)
 
 app.get('/restaurants/:latitude/:longitude', requestRest)
+
+app.post('/restaurants', postWinner) 
 
 
 viteExpress.listen(app, 8000, () => console.log(`Server is listening on port 8000`))
