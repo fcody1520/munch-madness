@@ -7,15 +7,21 @@
 }
 
 .active-node-box {
+    border: 1px solid #ffffff;
     background-color: rgb(34,181,215);
     min-height: 270px;
     min-width: 150px;
     cursor: pointer;
     border-radius: 14px;
+    font-style: bold;
+    padding-top: 8px;
+}
+.active-node-box:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
 }
 
 .inactive-node-box {
-    background-color: rgb(133,5,3, .6);
+    background-color: rgb(133,5,3, .3);
     min-height: 270px;
     min-width: 150px;
     border-radius: 14px;

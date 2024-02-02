@@ -8,18 +8,19 @@
 }
 
 .edit__form {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-items: center;
-    max-width: 600px;
-    margin: auto;
-    padding-bottom: 5px;
-    padding-top: 10px;
-    border-radius: 20px;
-    background-color: rgb(211,211,211,.4);
-    min-width: 450px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: center;
+  max-width: 600px;
+  margin: auto;
+  padding-bottom: 5px;
+  padding-top: 10px;
+  border-radius: 20px;
+  background-color: rgb(211,211,211,.4);
+  min-width: 450px;
+  box-shadow: 0 8px 6px -6px black;;
 }
 
 .edit__form input {

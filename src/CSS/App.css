@@ -85,13 +85,37 @@ button:focus-visible {
 
 .navbar__button {
   display: flex;
-  padding-left: 17vh;
+  padding-left: 12vh;
+
+}
+.navbar__button > button {
+  margin: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: rgb(34,181,215);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: black;
+}
+
+.navbar__button > button:hover {
+  background-color: white !important;
+  color: rgb(34,181,215) !important;
+}
+
+.navbar__button > div {
+  margin: 0 10px;
+  
 
 }
 
 .login__img {
-  width: 20rem;
-  height: 19rem;
+  width: 30rem;
+  height: 28rem;
   margin: auto;
 }
 .login__img > img {
@@ -109,6 +133,7 @@ button:focus-visible {
   background-color: rgb(211,211,211,.4);
   padding-bottom: 20px;
   width: 550px;
+  box-shadow: 0 8px 6px -6px black;
 }
 .contain > button {
   border-radius: 8px;
