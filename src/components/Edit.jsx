@@ -126,6 +126,7 @@ export default function Edit({ userData }) {
               placeholder="First Name"
               value={editFirstNameInput}
               onChange={(e) => setEditFirstNameInput(e.target.value)}
+              required
             />
             <br />
             <span>
@@ -137,6 +138,7 @@ export default function Edit({ userData }) {
               placeholder="Last-Name"
               value={editLastNameInput}
               onChange={(e) => setEditLastNameInput(e.target.value)}
+              required
             />
             <br />
             <span>
@@ -148,6 +150,7 @@ export default function Edit({ userData }) {
               placeholder="Email"
               value={editEmailInput}
               onChange={(e) => setEditEmailInput(e.target.value)}
+              required
             />
             <br />
             <span>
@@ -157,7 +160,8 @@ export default function Edit({ userData }) {
               type="password"
               placeholder="Current Password"
               value={oldPasswordInput}
-              onChange={(e) => setOldPasswordInput(e.target.value)}
+              onChange={(e) => setOldPasswordInput(e.target.value)} 
+              required
             />
             <br />
             <span>
@@ -184,6 +188,10 @@ export default function Edit({ userData }) {
               placeholder="Confirm Password"
               value={passwordConfirm}
               onChange={(e) => setPasswordConfirm(e.target.value)}
+              required
+              onKeyDown={(e) => {
+                if (e.key === "Enter") onSaveHandler(e);
+              }}
             />
           </div>
           <br />
@@ -222,6 +230,9 @@ export default function Edit({ userData }) {
                     value={deleteAcctPasswordInput}
                     onChange={(e) => setDeleteAcctPasswordInput(e.target.value)}
                     required
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") deleteAcctHandler(e);
+                    }}
                   />
                 </span>
               </Form.Group>

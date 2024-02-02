@@ -113,7 +113,10 @@ export default function Login({ setUserData, setLoggedIn }) {
                 type={showPassword ? 'text': 'password'} 
                 placeholder='Password'
                 onChange={(e) => setPasswordInput(e.target.value)} 
-                required/>
+                required
+                onKeyDown={e => {
+                    if (e.key === 'Enter' && action === 'Login') handleLogIn()
+                }}/>
             </div>
             <button className='smol' onClick={togglePasswordVisibility}>
                 {showPassword ? 'Hide Password' : 'Show Password' }
@@ -127,6 +130,10 @@ export default function Login({ setUserData, setLoggedIn }) {
                 placeholder='Verify Password'
                 value={verifyPasswordInput}
                 onChange={(e) => setVerifyPasswordInput(e.target.value)}
+                required
+                onKeyDown={e => {
+                    if (e.key === 'Enter' && action === 'Sign Up') handleSignUp()
+                }}
                 />
             </div>}
         </div>
@@ -143,3 +150,5 @@ export default function Login({ setUserData, setLoggedIn }) {
     </div>
   )
 }
+
+
