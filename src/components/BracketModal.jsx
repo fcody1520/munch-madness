@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 export default function BracketModal({ show, winnerNode }) {
-  // const [show, setShow] = useState(false);
 
   function handleReset() {
     location.reload();

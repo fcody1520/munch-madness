@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './CSS/index.css'
 import { Route, Routes,  createBrowserRouter, createRoutesFromElements, BrowserRouter } from 'react-router-dom';
 import Edit from './components/Edit.jsx';
+import History from './components/History.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter(
@@ -19,6 +20,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Routes>
       <Route path='/' element={<App/>}/>
       <Route path='/edit-info' element={<Edit/>}/>
+      <Route path='/history' element={<History/>}
+      />
     </Routes>
   </BrowserRouter>
   

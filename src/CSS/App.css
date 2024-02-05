@@ -95,12 +95,11 @@ button:focus-visible {
 
 
 .navbar__button {
+  border: 1px solid white;
   display: flex;
   align-items: center;
   height: 50px;
   padding-left: 260px;
-  
-
 }
 
 
