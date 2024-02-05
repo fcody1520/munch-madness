@@ -14,6 +14,7 @@ export default function History() {
       
         // create an object to store the count of each winner
         // if the winner occurs more than once, increment the count by 1
+        // if the winner occurs only once, add it to the object with a count of 1
         // return the object
       
     });
