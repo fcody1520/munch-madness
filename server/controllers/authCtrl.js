@@ -135,4 +135,8 @@ export default {
         })
         res.status(200).send(winner)
     },
+    getWinners: async (req,res) => {
+        const winners = await Winner.findAll({where: {userId: req.session.user.userId}})
+        res.status(200).send(winners)
+    }
 }

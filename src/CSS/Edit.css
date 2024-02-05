@@ -20,7 +20,7 @@
   border-radius: 20px;
   background-color: rgb(211,211,211,.4);
   min-width: 450px;
-  box-shadow: 0 8px 6px -6px black;;
+  box-shadow: 0 8px 6px -6px black;
 }
 
 .edit__form input {
@@ -59,7 +59,7 @@ span {
     border: red !important;
     font-family: 'Courier New', Courier, monospace !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
   }
 
   .delete {
@@ -72,9 +72,14 @@ span {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   } 
   .modal-header, .modal-body, .modal-footer {
-    background-color: rgb(187,209,213, .3) !important;
+    background-color: rgb(187,209,213) !important;
   }
  
   .mb-3 input {
     background: transparent;
+  }
+
+  .delete__acct {
+    position: absolute;
+    bottom: 190px;
   }
