@@ -4,6 +4,7 @@ import Login from './components/Login'
 import Bracket from './components/Bracket'
 import axios from 'axios'
 import Navbar from './components/Navbar'
+import { Outlet } from 'react-router-dom'
 
 function App() {
 
@@ -40,7 +41,7 @@ function App() {
             setLoggedIn={setLoggedIn}
             userData={userData}
           />
-          <Bracket/>
+          <Outlet/>
         </div>
         :
         <Login

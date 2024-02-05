@@ -1,5 +1,6 @@
 #root {
   margin: 0 auto;
+  overflow-x: hidden;
   /* padding: 2rem; */
   text-align: center;
   height: 100%;
@@ -78,7 +79,7 @@ button:focus-visible {
 .navbar__image {
   width: 5rem;
   height: 5rem;
-  overflow: hidden;
+  /* overflow: hidden; */
   
 }
 
@@ -95,7 +96,6 @@ button:focus-visible {
 
 
 .navbar__button {
-  border: 1px solid white;
   display: flex;
   align-items: center;
   height: 50px;
