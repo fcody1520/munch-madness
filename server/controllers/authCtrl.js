@@ -1,4 +1,4 @@
-import {User, Winner} from '../db/model.js'
+import {User, Winner,sequelize} from '../db/model.js'
 import axios from 'axios';
 
 export default {
@@ -136,7 +136,7 @@ export default {
         res.status(200).send(winner)
     },
     getWinners: async (req,res) => {
-        const winners = await Winner.findAll({where: {userId: req.session.user.userId}})
-        res.status(200).send(winners)
+        const winners = await sequelize.query(`SELECT * FROM winners WHERE user_id = ${req.session.user.userId} AND created_at > '${new Date((new Date()).setMonth((new Date()).getMonth()-1)).toISOString()}' ORDER BY created_at DESC` )
+        res.status(200).send(winners[0])
     }
 }
