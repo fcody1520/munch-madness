@@ -8,15 +8,24 @@ export default function History() {
 
   useEffect(() => {
     axios.get("/winners").then((response) => {
-      console.log(response.data);
-      setWinners(response.data);
+      // console.log(response.data);
 
-      
-        // create an object to store the count of each winner
-        // if the winner occurs more than once, increment the count by 1
-        // if the winner occurs only once, add it to the object with a count of 1
-        // return the object
-      
+      let newWinners = {};
+      for (let i=0; i<response.data.length; i++){
+        if (response.data[i].rest_name in newWinners){
+          newWinners[response.data[i].rest_name].count += 1;
+        } else {
+          newWinners[response.data[i].rest_name] = {
+            count: 1,
+            img: response.data[i].rest_img,
+            address: response.data[i].rest_address,
+          };
+        }
+      }
+
+      console.log(Object.entries(newWinners))
+      setWinners(Object.entries(newWinners))
+
     });
   }, []);
 
@@ -25,15 +34,15 @@ export default function History() {
       <div className="height">
         <h1>Your Munch History:</h1>
         {winners.length > 0 ? (
-          winners.map((winner, idx) => {
+          winners.map((wArr, idx) => {
             return (
               <div className="winner" key={idx}>
-                <h3>Winner: {winner.rest_name}</h3>
+                <h3>Winner: {wArr[0]}</h3>
                 <div className="card__images">
-                  <img src={winner.rest_img} alt="" />
+                  <img src={wArr[1].img} alt="" />
                 </div>
-                <p>{winner.rest_address}</p>
-                <p>You ate here [x] times within the last month!</p>
+                <p>{wArr[1].address}</p>
+                <p>You ate here {wArr[1].count} time(s) within the last month!</p>
               </div>
             );
           })
