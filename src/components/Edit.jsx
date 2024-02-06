@@ -13,6 +13,7 @@ import {
   faPaperPlane,
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 export default function Edit({ userData }) {
   const navigate = useNavigate();
@@ -42,62 +43,94 @@ export default function Edit({ userData }) {
     e.preventDefault();
 
     if (editPasswordInput !== passwordConfirm) {
-      alert(`New passwords don't match.`);
+      Swal.fire("Error", "New passwords don't match.", "error");
       return;
     }
-    const isConfirmed = confirm(
-      "Are you sure you want to change your personal info?"
-    );
-    if (!isConfirmed) return;
-    else {
-      let editInfoBod = {
-        fname: editFirstNameInput,
-        lname: editLastNameInput,
-        email: editEmailInput,
-        oPassword: oldPasswordInput,
-        nPassword: editPasswordInput,
-      };
-      const res = await axios
-        .put("/edit-user", editInfoBod)
-        .catch((err) => console.error("Error during edit request:", err));
-      setEditFirstNameInput("");
-      setEditLastNameInput("");
-      setEditEmailInput("");
-      setOldPasswordInput("");
-      setEditPasswordInput("");
-      setPasswordConfirm("");
-      alert("Your Info has been saved!");
-    }
+    
+    Swal.fire({
+      title: "Save Changes?",
+      background: "#eeeeee",
+      text: "Are you sure you want to save your changes?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#FF0000",
+      confirmButtonText: "Yes, save changes!",
+    }).then((result) => {
+      if (!result.isConfirmed) return;
+      else {
+        let editInfoBod = {
+          fname: editFirstNameInput,
+          lname: editLastNameInput,
+          email: editEmailInput,
+          oPassword: oldPasswordInput,
+          nPassword: editPasswordInput,
+        };
+        const res = axios
+          .put("/edit-user", editInfoBod)
+          .catch((err) => console.error("Error during edit request:", err));
+          
+        Swal.fire({
+          title: "Changes Saved!",
+          text: "Your changes have been saved.",
+          icon: "success",
+          timer: 2000, // Timer in milliseconds (3 seconds)
+          showConfirmButton: true
+        });
+        navigate("/");
+      }
+    })
   }
 
   function onCancelHandler(e) {
     e.preventDefault();
-    const isConfirmed = confirm(
-      `Are you sure that you don't want to change anything?`
-    );
-    if (!isConfirmed) return;
-    else {
-      navigate("/");
-    }
+
+    Swal.fire({
+      title: "Are you sure?",
+      background: "#eeeeee",
+      text: "You will lose any unsaved changes.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#FF0000",
+      confirmButtonText: "Yes, cancel!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Cancelled!", "Your changes have been discarded.", "success");
+        navigate("/");
+      }
+    })
   }
 
   async function deleteAcctHandler(e) {
     e.preventDefault();
 
-    const isConfirmed = confirm(
-      `Your account will be permanently deleted, do you wish to continue?`
-    );
-
-    if (!isConfirmed) return;
-    else {
-      let deleteMaBod = {
-        password: deleteAcctPasswordInput,
-      };
-      const res = await axios
-        .put(`/delete-user`, deleteMaBod)
-        .catch((err) => console.error("Error during edit request:", err));
-    }
-    navigate("/");
+    Swal.fire({
+      title: "Are you sure?",
+      background: "#eeeeee",
+      text: "Your account will be permanently deleted.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#FF0000",
+      confirmButtonText: "Yes, delete my account.", 
+    }).then((result) => {
+      if (!result.isConfirmed) return;
+      else {
+        let deleteMaBod = {
+          password: deleteAcctPasswordInput,
+        };
+        const res = axios
+          .put(`/delete-user`, deleteMaBod)
+          .catch((err) => console.error("Error during edit request:", err));
+        Swal.fire({
+          title: "Account Deleted!",
+          text: "Your account has been deleted.",
+          icon: "success",
+          timer: 2000, 
+          showConfirmButton: true
+        });
+        navigate("/");
+        location.reload();
+      }
+    })
   }
 
   return (
