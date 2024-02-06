@@ -43,7 +43,15 @@ export default function Edit({ userData }) {
     e.preventDefault();
 
     if (editPasswordInput !== passwordConfirm) {
-      Swal.fire("Error", "New passwords don't match.", "error");
+      Swal.fire({
+        title: "Error!",
+        text: "Passwords do not match.",
+        icon: "warning",
+        confirmButtonColor: "#FF0000",
+        customClass: {
+          popup: "popup__class",
+        }
+    });
       return;
     }
     
@@ -55,7 +63,10 @@ export default function Edit({ userData }) {
       showCancelButton: true,
       confirmButtonColor: "#FF0000",
       confirmButtonText: "Yes, save changes!",
-    }).then((result) => {
+      customClass: {
+        popup: "popup__class",
+      }
+      }).then((result) => {
       if (!result.isConfirmed) return;
       else {
         let editInfoBod = {
@@ -74,7 +85,11 @@ export default function Edit({ userData }) {
           text: "Your changes have been saved.",
           icon: "success",
           timer: 2000, // Timer in milliseconds (3 seconds)
-          showConfirmButton: true
+          showConfirmButton: true,
+          confirmButtonColor: "#FF0000",
+          customClass: {
+            popup: "popup__class",
+          }
         });
         navigate("/");
       }
@@ -92,9 +107,22 @@ export default function Edit({ userData }) {
       showCancelButton: true,
       confirmButtonColor: "#FF0000",
       confirmButtonText: "Yes, cancel!",
+      customClass: {
+        popup: "popup__class",
+      }
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Cancelled!", "Your changes have been discarded.", "success");
+        Swal.fire({
+          title:"Cancelled!", 
+          text: "Your changes have been discarded.", 
+          icon: "success",
+          timer: 2000,
+          showConfirmButton: true,
+          confirmButtonColor: "#FF0000",
+          customClass: {
+            popup: "popup__class",
+          }
+        });
         navigate("/");
       }
     })
@@ -110,7 +138,10 @@ export default function Edit({ userData }) {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#FF0000",
-      confirmButtonText: "Yes, delete my account.", 
+      confirmButtonText: "Yes, delete my account.",
+      customClass: {
+        popup: "popup__class",
+      } 
     }).then((result) => {
       if (!result.isConfirmed) return;
       else {
@@ -125,7 +156,7 @@ export default function Edit({ userData }) {
           text: "Your account has been deleted.",
           icon: "success",
           timer: 2000, 
-          showConfirmButton: true
+          showConfirmButton: false
         });
         navigate("/");
         location.reload();

@@ -83,3 +83,7 @@ span {
     position: absolute;
     bottom: 190px;
   }
+
+  .popup__class {
+    font-family: 'Courier New', Courier, monospace;
+  }

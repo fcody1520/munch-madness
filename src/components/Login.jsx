@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleUser,faKey,faUnlockKeyhole,faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default function Login({ setUserData, setLoggedIn }) {
     
@@ -43,12 +44,15 @@ export default function Login({ setUserData, setLoggedIn }) {
             password: passwordInput
         }
 
-        // logic for password matching here
-
-        if(passwordInput !== verifyPasswordInput){
-            alert(`Password fields don't match!`)
-            return
+        if(passwordInput!== verifyPasswordInput){
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: `Password fields don't match!`,
+            }) 
+            return 
         }
+        
 
         try{ 
             const response = await axios.post('/register', signMaBod)
@@ -57,7 +61,11 @@ export default function Login({ setUserData, setLoggedIn }) {
             setEmailInput('')
             setPasswordInput('')
             setVerifyPasswordInput('')
-            alert(`User added, please login and let's Munch!`)
+            Swal.fire({
+                icon: 'success',
+                title: 'User Added',
+                text: "Please login and let's Munch!",
+            });
 
             } catch (error) {
                 console.error('Error during post request:', error)
