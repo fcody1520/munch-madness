@@ -20,7 +20,22 @@
 
 
 .active-node-box:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+    animation: box-shadow-animation 0.5s infinite;
+}
+
+@keyframes box-shadow-animation {
+    0% {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+        transform: translateY(0) !important;
+    }
+    50% {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+        transform: translateY(5px)!important;
+    }
+    100% {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+        transform: translateY(0)!important;
+    }
 }
 
 .inactive-node-box {
