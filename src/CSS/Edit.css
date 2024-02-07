@@ -5,13 +5,13 @@
     align-items: center;
     margin: auto;
     margin-bottom: 10px;
+    position: fixed;
 }
 
 .edit__form {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  align-items: center;
   align-items: center;
   max-width: 600px;
   margin: auto;
@@ -27,10 +27,18 @@
     height: 40px;
     width: 200px;
     background: transparent;
+    border: 1px solid red;
     border-radius: 10px;
     font-size: 19px;
     margin-bottom: 10px;
-    color: darkslategrey;
+    color: rgb(128, 0, 32);
+    font-weight: 600;
+}
+
+.edit__form input::placeholder {
+    color: rgb(128, 0, 32);
+    font-size: 19px;
+    font-weight: 600;
 }
 
 .edit__inputs {

@@ -50,6 +50,10 @@ export default function Login({ setUserData, setLoggedIn }) {
                 background: "#eeeeee",
                 title: 'Oops...',
                 text: `Password fields don't match!`,
+                confirmButtonColor: "#FF0000",
+                customClass: {
+                    popup: "popup__class",
+                  }
             }) 
             return 
         }
@@ -67,6 +71,10 @@ export default function Login({ setUserData, setLoggedIn }) {
                 background: "#eeeeee",
                 title: 'User Added',
                 text: "Please login and let's Munch!",
+                confirmButtonColor: "#FF0000",
+                customClass: {
+                    popup: "popup__class",
+                  }
             });
 
             } catch (error) {
