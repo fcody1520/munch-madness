@@ -2,9 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUserGear,
   faGears,
-  faToolbox,
   faClockRotateLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
