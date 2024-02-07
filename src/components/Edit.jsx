@@ -45,6 +45,7 @@ export default function Edit({ userData }) {
     if (editPasswordInput !== passwordConfirm) {
       Swal.fire({
         title: "Error!",
+        background: "#eeeeee",
         text: "Passwords do not match.",
         icon: "warning",
         confirmButtonColor: "#FF0000",
@@ -82,6 +83,7 @@ export default function Edit({ userData }) {
           
         Swal.fire({
           title: "Changes Saved!",
+          background: "#eeeeee",
           text: "Your changes have been saved.",
           icon: "success",
           timer: 2000, // Timer in milliseconds (3 seconds)
@@ -113,7 +115,8 @@ export default function Edit({ userData }) {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
-          title:"Cancelled!", 
+          title:"Cancelled!",
+          background: "#eeeeee", 
           text: "Your changes have been discarded.", 
           icon: "success",
           timer: 2000,
@@ -153,6 +156,7 @@ export default function Edit({ userData }) {
           .catch((err) => console.error("Error during edit request:", err));
         Swal.fire({
           title: "Account Deleted!",
+          background: "#eeeeee",
           text: "Your account has been deleted.",
           icon: "success",
           timer: 2000, 

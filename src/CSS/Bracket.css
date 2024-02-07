@@ -20,7 +20,7 @@
 
 
 .active-node-box:hover {
-    animation: box-shadow-animation 0.5s infinite;
+    animation: box-shadow-animation 0.75s ease-in infinite;
 }
 
 @keyframes box-shadow-animation {
@@ -30,6 +30,10 @@
     }
     50% {
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5);
+        -webkit-transform: translateY(5px)!important;
+        -moz-transform: translateY(5px)!important;
+        -ms-transform: translateY(5px)!important;
+        -o-transform: translateY(5px)!important;
         transform: translateY(5px)!important;
     }
     100% {

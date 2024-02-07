@@ -47,6 +47,7 @@ export default function Login({ setUserData, setLoggedIn }) {
         if(passwordInput!== verifyPasswordInput){
             Swal.fire({
                 icon: 'warning',
+                background: "#eeeeee",
                 title: 'Oops...',
                 text: `Password fields don't match!`,
             }) 
@@ -63,6 +64,7 @@ export default function Login({ setUserData, setLoggedIn }) {
             setVerifyPasswordInput('')
             Swal.fire({
                 icon: 'success',
+                background: "#eeeeee",
                 title: 'User Added',
                 text: "Please login and let's Munch!",
             });
