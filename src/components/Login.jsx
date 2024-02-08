@@ -32,7 +32,16 @@ export default function Login({ setUserData, setLoggedIn }) {
 
         } catch (error) {
             console.error('Error during post request:', error.response.data.message)
-            alert(error.response.data.message);
+            Swal.fire({
+                icon: 'warning',
+                background: "#eeeeee",
+                title: 'Error',
+                text: error.response.data.message,
+                confirmButtonColor: "#FF0000",
+                customClass: {
+                    popup: "popup__class",
+                }
+            });
         }
     };
 
