@@ -6,17 +6,29 @@ import {
   faClockRotateLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export default function Navbar({ userData, setLoggedIn }) {
   const navigate = useNavigate();
 
   async function handleLogout() {
-    try {
+    const result = await Swal.fire({
+      title: "Logout",
+      text: "Are you sure you want to logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout",
+      customClass: {
+        popup: "popup__class",
+      },
+    });
+
+    if (result.isConfirmed) {
       await axios.delete("/logout");
       setLoggedIn(false);
       navigate("/");
-    } catch (error) {
-      console.error("Error during logout request:", error);
     }
   }
 

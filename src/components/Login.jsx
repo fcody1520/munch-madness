@@ -44,7 +44,7 @@ export default function Login({ setUserData, setLoggedIn }) {
             });
         }
     };
-
+ 
     async function handleSignUp(){
         let signMaBod ={
             fname: firstNameInput,
