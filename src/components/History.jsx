@@ -8,7 +8,6 @@ export default function History() {
 
   useEffect(() => {
     axios.get("/winners").then((response) => {
-      // console.log(response.data);
 
       let newWinners = {};
       for (let i=0; i<response.data.length; i++){
@@ -23,7 +22,6 @@ export default function History() {
         }
       }
 
-      console.log(Object.entries(newWinners))
       setWinners(Object.entries(newWinners))
 
     });

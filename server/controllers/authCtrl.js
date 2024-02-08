@@ -73,7 +73,6 @@ export default {
         const user = await User.findByPk(userId)
         
         if (oPassword === user.password){
-            console.log();
             user.set({
                 email: email,
                 fname: fname,
@@ -126,7 +125,6 @@ export default {
     },
     postWinner: async (req,res) => {
         const { name,address,img } = req.body
-        console.log(req.body);
         const winner = await Winner.create({
             restName: name,
             restAddress: address,
