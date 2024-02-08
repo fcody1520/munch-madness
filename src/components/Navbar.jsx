@@ -17,8 +17,7 @@ export default function Navbar({ userData, setLoggedIn }) {
       text: "Are you sure you want to logout?",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#FF0000",
       confirmButtonText: "Yes, logout",
       customClass: {
         popup: "popup__class",
