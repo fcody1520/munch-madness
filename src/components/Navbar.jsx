@@ -16,6 +16,7 @@ export default function Navbar({ userData, setLoggedIn }) {
       title: "Logout",
       text: "Are you sure you want to logout?",
       icon: "warning",
+      position: 'top-end',
       showCancelButton: true,
       confirmButtonColor: "#FF0000",
       confirmButtonText: "Yes, logout",
