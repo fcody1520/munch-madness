@@ -20,7 +20,7 @@
 
 
 .active-node-box:hover {
-    animation: box-shadow-animation 0.75s ease-in infinite;
+    animation: purpleShadow 0.75s ease-in infinite;
 }
 
 @keyframes box-shadow-animation {
