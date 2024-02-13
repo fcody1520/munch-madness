@@ -2,13 +2,12 @@ import express from 'express'
 import session from 'express-session'
 import viteExpress from 'vite-express'
 import authCtrl from './controllers/authCtrl.js'
-import cors from 'cors';
 
 const app = express()
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 app.use(session({secret: 'punkface', saveUninitialized:true, resave: false}))
-app.use(cors());
+
 
 function loginRequired(req, res, next){
     if (!req.session.user.userId){
